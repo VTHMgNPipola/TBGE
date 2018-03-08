@@ -43,41 +43,28 @@ public class ArrayEntityContainer implements EntityContainer {
 	
 	@Override
 	public void add(Entity e) {
-		if(fixedSize) {
-			for(int i = 0; i < entities.length; i++) {
-				if(entities[i] == null) {
-					entities[i] = e;
-					break;
-				}
-			}
-		} else {
-			for(int i = 0; i < entities.length; i++) {
-				if(entities[i] == null) {
-					if(entities.length <= i + 1) {
-						Entity[] tmp = entities;
-						entities = new Entity[entities.length + 5];
-						for(int j = 0; j < tmp.length; j++) {
-							entities[j] = tmp[j];
-						}
-					}
-					entities[i] = e;
-					break;
-				}
-			}
+		Entity[] tmp = new Entity[size()]; // Temporary array
+		for(int i = 0; i < tmp.length; i++) { // Iterates over tmp array (empty)
+			tmp[i] = entities[i]; // Copy entities of 'entities' array to tmp
+		}
+		increaseSize(); // Increases array size, if needed
+		entities[0] = e; // Put 'e' parameter into first position
+		for(int i = 0; i < tmp.length; i++) { // Iterates over array
+			entities[i + 1] = tmp[i]; // Place tmp into offset 1 of entities array.
 		}
 	}
 	
 	@Override
 	public void add(int p, Entity e) {
-		if(entities.length <= p) {
-			Entity[] tmp = entities;
-			entities = new Entity[p + 5];
-			for(int j = 0; j < tmp.length; j++) {
-				entities[j] = tmp[j];
-			}
+		Entity[] tmp = new Entity[size()]; // Temporary array
+		for(int i = 0; i < tmp.length; i++) { // Iterates over tmp array (empty)
+			tmp[i] = entities[i]; // Copy entities of 'entities' array to tmp
 		}
-		
-		entities[p] = e;
+		increaseSize(); // Increases array size, if needed
+		entities[p] = e; // Put 'e' parameter into 'p' position
+		for(int i = p; i < tmp.length; i++) { // Iterates over array
+			entities[i + 1] = tmp[i]; // Place tmp into offset 1 of entities array.
+		}
 	}
 	
 	@Override
@@ -119,5 +106,18 @@ public class ArrayEntityContainer implements EntityContainer {
 			}
 		}
 		return size;
+	}
+	
+	private void increaseSize() {
+		if(size() == entities.length) { // If no more space in array
+			if(fixedSize) { // If array is fixed size
+				throw new IndexOutOfBoundsException("No more space into fixed size entity array");
+				// Throws exception
+			} else {
+				entities = new Entity[entities.length + 5]; // Increases size of array
+				// Doesn't need to have a replace code here, this will already be
+				// done by following while block
+			}
+		}
 	}
 }
