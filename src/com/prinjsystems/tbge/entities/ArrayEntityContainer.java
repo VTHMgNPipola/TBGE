@@ -115,8 +115,8 @@ public class ArrayEntityContainer implements EntityContainer {
 				// Throws exception
 			} else {
 				entities = new Entity[entities.length + 5]; // Increases size of array
-				// Doesn't need to have a replace code here, this will already be
-				// done by following while block
+				// Doesn't need to have a replace code here, because the methods that
+				// will use this already have a "backup" array.
 			}
 		}
 	}
