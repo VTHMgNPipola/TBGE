@@ -20,6 +20,14 @@ package com.prinjsystems.tbge.entities;
  * Runs something for a entity.
  */
 public interface EntityAction {
+	/**
+	 * Defines a entity for the action to use.
+	 * @param e Entity where the action will focus.
+	 */
 	public void setEntity(Entity e);
+	
+	/**
+	 * Runs the action.
+	 */
 	public void run();
 }

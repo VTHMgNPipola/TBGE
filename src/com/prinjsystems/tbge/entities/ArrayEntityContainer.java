@@ -18,25 +18,43 @@ package com.prinjsystems.tbge.entities;
 
 /**
  * Uses a common array to store entites. Can be fixed size or extendable.
+ * If it is extendable, when the array gets full, it's size increments by 5.
  */
 public class ArrayEntityContainer implements EntityContainer {
 	private Entity[] entities;
 	private boolean fixedSize;
 	
+	/**
+	 * Creates a new instance.
+	 * @param startSize Start size of array.
+	 * @param fixedSize If it will be fixed or not.
+	 */
 	public ArrayEntityContainer(int startSize, boolean fixedSize) {
 		entities = new Entity[startSize];
 		this.fixedSize = fixedSize;
 	}
 	
+	/**
+	 * Creates a new extendable instance.
+	 * @param startSize Start size of array.
+	 */
 	public ArrayEntityContainer(int startSize) {
 		entities = new Entity[startSize];
 		this.fixedSize = false;
 	}
 	
+	/**
+	 * Defines a value for {@code fixedSise}.
+	 * @param fixedSize New value for variable.
+	 */
 	public void setFixedSize(boolean fixedSize) {
 		this.fixedSize = fixedSize;
 	}
 	
+	/**
+	 * Return the value of the variable {@code fixedSize}.
+	 * @return {@code fixedSize} value.
+	 */
 	public boolean isFixedSize() {
 		return fixedSize;
 	}

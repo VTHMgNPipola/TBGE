@@ -34,10 +34,18 @@ public abstract class Entity {
 		this.inventory = inventory;
 	}
 	
+	/**
+	 * Return the name of this entity.
+	 * @return Entity name.
+	 */
 	public final String getName() {
 		return name;
 	}
 	
+	/**
+	 * Return the inventory of this entity.
+	 * @return Entity inventory.
+	 */
 	public final EntityContainer getInventory() {
 		return inventory;
 	}
