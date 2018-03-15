@@ -16,6 +16,8 @@
  */
 package com.prinjsystems.tbge.entities;
 
+import com.prinjsystems.tbge.entities.items.Item;
+
 /**
  * Uses a common array to store entites. Can be fixed size or extendable.
  * If it is extendable, when the array gets full, it's size increments by 5.
@@ -67,6 +69,9 @@ public class ArrayEntityContainer implements EntityContainer {
 		}
 		increaseSize(); // Increases array size, if needed
 		entities[0] = e; // Put 'e' parameter into first position
+		if(e instanceof Item) {
+			((Item) e).onPick();
+		}
 		for(int i = 0; i < tmp.length; i++) { // Iterates over array
 			entities[i + 1] = tmp[i]; // Place tmp into offset 1 of entities array.
 		}
@@ -80,6 +85,9 @@ public class ArrayEntityContainer implements EntityContainer {
 		}
 		increaseSize(); // Increases array size, if needed
 		entities[p] = e; // Put 'e' parameter into 'p' position
+		if(e instanceof Item) {
+			((Item) e).onPick();
+		}
 		for(int i = p; i < tmp.length; i++) { // Iterates over array
 			entities[i + 1] = tmp[i]; // Place tmp into offset 1 of entities array.
 		}
@@ -87,6 +95,9 @@ public class ArrayEntityContainer implements EntityContainer {
 	
 	@Override
 	public Entity get(int i) throws IndexOutOfBoundsException {
+		if(entities[i] instanceof Item) {
+			((Item) entities[i]).onHandle();
+		}
 		return entities[i];
 	}
 	
@@ -97,6 +108,9 @@ public class ArrayEntityContainer implements EntityContainer {
 		for(int j = i + 1; j < entities.length; j++) { // Iterates over entities array
 			entities[j - 1] = entities[j]; // Swap entity on position J to J - 1
 			entities[j] = null; // Makes position J null, worth at last operation.
+		}
+		if(entities[i] instanceof Item) {
+			((Item) entities[i]).onDrop();
 		}
 		return tmp;
 	}

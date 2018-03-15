@@ -16,6 +16,7 @@
  */
 package com.prinjsystems.tbge.entities;
 
+import com.prinjsystems.tbge.entities.items.Item;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,20 +36,32 @@ public class ListEntityContainer implements EntityContainer {
 	@Override
 	public void add(Entity e) {
 		entities.add(e);
+		if(e instanceof Item) {
+			((Item) e).onPick();
+		}
 	}
 	
 	@Override
 	public void add(int p, Entity e) {
 		entities.add(p, e);
+		if(e instanceof Item) {
+			((Item) e).onPick();
+		}
 	}
 	
 	@Override
 	public Entity get(int i) throws IndexOutOfBoundsException {
+		if(entities.get(i) instanceof Item) {
+			((Item) entities.get(i)).onHandle();
+		}
 		return entities.get(i);
 	}
 	
 	@Override
 	public Entity remove(int i) throws IndexOutOfBoundsException {
+		if(entities.get(i) instanceof Item) {
+			((Item) entities.get(i)).onDrop();
+		}
 		return entities.remove(i);
 	}
 
