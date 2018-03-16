@@ -16,20 +16,19 @@
  */
 package com.prinjsystems.tbge.text;
 
-import com.prinjsystems.tbge.text.TerminalPrinter;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Make tests on class {@code TerminalPrinter}.
  */
 public class TerminalPrinterTest {
-	private static class LoggedPrintStream extends PrintStream {
+	public static class LoggedPrintStream extends PrintStream {
 		private final StringBuilder buf;
 		private final PrintStream underlying;
 		
@@ -67,7 +66,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_String() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		String text = "hi world";
@@ -81,7 +80,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_int() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		int i = 27;
@@ -95,7 +94,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_long() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		long l = 4768123132L;
@@ -109,7 +108,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_float() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		float f = 32.94F;
@@ -123,7 +122,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_double() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		double d = 18.15613218562;
@@ -137,7 +136,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_boolean() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		boolean b = true;
@@ -151,7 +150,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrint_char() {
-		System.out.println("print");
+		System.out.println("\nTesting print");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		char c = ' ';
@@ -165,7 +164,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_String() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		String text = "hi world";
@@ -179,7 +178,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_int() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		int i = 27;
@@ -193,7 +192,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_long() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		long l = 4768123132L;
@@ -207,7 +206,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_float() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		float f = 32.94F;
@@ -221,7 +220,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_double() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		double d = 18.15613218562;
@@ -235,7 +234,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_boolean() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		boolean b = true;
@@ -249,7 +248,7 @@ public class TerminalPrinterTest {
 	 */
 	@Test
 	public void testPrintln_char() {
-		System.out.println("println");
+		System.out.println("\nTesting println");
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		char c = 'f';

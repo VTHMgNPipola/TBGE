@@ -17,7 +17,7 @@
 package com.prinjsystems.tbge.entities;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Make tests of the class ListEntityContainer.
@@ -28,7 +28,7 @@ public class ListEntityContainerTest {
 	 */
 	@Test
 	public void testAdd_Entity() {
-		System.out.println("Testing add");
+		System.out.println("\nTesting add");
 		Entity e = null;
 		ListEntityContainer instance = new ListEntityContainer();
 		instance.add(e);
@@ -40,7 +40,7 @@ public class ListEntityContainerTest {
 	 */
 	@Test
 	public void testAdd_int_Entity() {
-		System.out.println("Testing add");
+		System.out.println("\nTesting add");
 		int p = 0; // Need to be 0, since list will not have following indices
 		Entity e = new Entity("E1", null) {};
 		ListEntityContainer instance = new ListEntityContainer();
@@ -53,7 +53,7 @@ public class ListEntityContainerTest {
 	 */
 	@Test
 	public void testGet() {
-		System.out.println("Testing get");
+		System.out.println("\nTesting get");
 		int i = 0; // Need to be 0, since list will not have following indices
 		ListEntityContainer instance = new ListEntityContainer();
 		Entity expResult = null;
@@ -67,7 +67,7 @@ public class ListEntityContainerTest {
 	 */
 	@Test
 	public void testRemove() {
-		System.out.println("Testing remove");
+		System.out.println("\nTesting remove");
 		ListEntityContainer instance = new ListEntityContainer();
 		Entity expResult = new Entity("E1", null) {};
 		instance.add(expResult);
@@ -81,7 +81,7 @@ public class ListEntityContainerTest {
 	 */
 	@Test
 	public void testSize() {
-		System.out.println("Testing size");
+		System.out.println("\nTesting size");
 		ListEntityContainer instance = new ListEntityContainer();
 		for(int i = 0; i < 50; i++) {
 			instance.add(new Entity("E" + i, null) {});

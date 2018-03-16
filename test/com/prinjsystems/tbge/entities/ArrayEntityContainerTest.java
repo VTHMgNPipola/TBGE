@@ -17,7 +17,7 @@
 package com.prinjsystems.tbge.entities;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Make tests of the class ArrayEntityContainer.
@@ -28,7 +28,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testSetFixedSize() {
-		System.out.println("Testing setFixedSize");
+		System.out.println("\nTesting setFixedSize");
 		boolean fixedSize = true;
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
 		instance.setFixedSize(fixedSize);
@@ -40,7 +40,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testIsFixedSize() {
-		System.out.println("Testing isFixedSize");
+		System.out.println("\nTesting isFixedSize");
 		ArrayEntityContainer instance = new ArrayEntityContainer(5, true);
 		boolean result = instance.isFixedSize();
 		assertEquals(true, result);
@@ -51,7 +51,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testAdd_Entity() {
-		System.out.println("Testing add");
+		System.out.println("\nTesting add");
 		Entity e = null;
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
 		instance.add(e);
@@ -63,7 +63,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testAdd_int_Entity() {
-		System.out.println("Testing add");
+		System.out.println("\nTesting add");
 		int p = 2;
 		Entity e = new Entity("E1", null) {};
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
@@ -76,7 +76,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testGet() {
-		System.out.println("Testing get");
+		System.out.println("\nTesting get");
 		int i = 3;
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
 		Entity expResult = null;
@@ -90,7 +90,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testRemove() {
-		System.out.println("Testing remove");
+		System.out.println("\nTesting remove");
 		int i = 0;
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
 		Entity expResult = new Entity("E1", null) {};
@@ -105,7 +105,7 @@ public class ArrayEntityContainerTest {
 	 */
 	@Test
 	public void testSize() {
-		System.out.println("Testing size");
+		System.out.println("\nTesting size");
 		ArrayEntityContainer instance = new ArrayEntityContainer(5);
 		for(int i = 0; i < 50; i++) {
 			instance.add(new Entity("E" + i, null) {});
