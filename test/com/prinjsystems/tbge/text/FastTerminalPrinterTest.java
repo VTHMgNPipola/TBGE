@@ -25,19 +25,29 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Make tests on class {@code TerminalPrinter}.
+ * Make tests on class {@code FastTerminalPrinter}.
  */
-public class TerminalPrinterTest {
+public class FastTerminalPrinterTest {
+
+	/**
+	 * Redirects all the outputs from any PrintStream to a StringBuilder.
+	 */
 	public static class LoggedPrintStream extends PrintStream {
 		private final StringBuilder buf;
 		private final PrintStream underlying;
 		
 		LoggedPrintStream(StringBuilder sb, OutputStream os, PrintStream ul) {
-		super(os);
+			super(os);
 			this.buf = sb;
 			this.underlying = ul;
 		}
 		
+		/**
+		 * Creates a new instance of {@code LoggedPrintStream}, with all it's components being
+		 * already defined.
+		 * @param toLog PrintStream to be redirected.
+		 * @return The new LoggedPrintStream instance.
+		 */
 		public static LoggedPrintStream create(PrintStream toLog) {
 			try {
 				final StringBuilder sb = new StringBuilder();
@@ -70,7 +80,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		String text = "hi world";
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(text);
 		assertEquals(text, lps.toString());
 	}
@@ -84,7 +94,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		int i = 27;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(i);
 		assertEquals(String.valueOf(i), lps.toString());
 	}
@@ -98,7 +108,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		long l = 4768123132L;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(l);
 		assertEquals(String.valueOf(l), lps.toString());
 	}
@@ -112,7 +122,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		float f = 32.94F;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(f);
 		assertEquals(String.valueOf(f), lps.toString());
 	}
@@ -126,7 +136,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		double d = 18.15613218562;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(d);
 		assertEquals(String.valueOf(d), lps.toString());
 	}
@@ -140,7 +150,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		boolean b = true;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(b);
 		assertEquals(String.valueOf(b), lps.toString());
 	}
@@ -154,7 +164,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		char c = ' ';
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.print(c);
 		assertEquals(String.valueOf(c), lps.toString());
 	}
@@ -168,7 +178,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		String text = "hi world";
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(text);
 		assertEquals(String.valueOf(text) + System.lineSeparator(), lps.toString());
 	}
@@ -182,7 +192,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		int i = 27;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(i);
 		assertEquals(String.valueOf(i) + System.lineSeparator(), lps.toString());
 	}
@@ -196,7 +206,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		long l = 4768123132L;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(l);
 		assertEquals(String.valueOf(l) + System.lineSeparator(), lps.toString());
 	}
@@ -210,7 +220,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		float f = 32.94F;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(f);
 		assertEquals(String.valueOf(f) + System.lineSeparator(), lps.toString());
 	}
@@ -224,7 +234,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		double d = 18.15613218562;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(d);
 		assertEquals(String.valueOf(d) + System.lineSeparator(), lps.toString());
 	}
@@ -238,7 +248,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		boolean b = true;
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(b);
 		assertEquals(String.valueOf(b) + System.lineSeparator(), lps.toString());
 	}
@@ -252,7 +262,7 @@ public class TerminalPrinterTest {
 		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		char c = 'f';
-		TerminalPrinter instance = new TerminalPrinter();
+		TerminalPrinter instance = new FastTerminalPrinter();
 		instance.println(c);
 		assertEquals(String.valueOf(c) + System.lineSeparator(), lps.toString());
 	}

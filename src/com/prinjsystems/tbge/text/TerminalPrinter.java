@@ -16,39 +16,12 @@
  */
 package com.prinjsystems.tbge.text;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-
 /**
  * Prints text on System.out as fast as it can, using BufferedOutputStream.
  * If you want to use GUI with a JTextArea or JTextPane as output, define a PrintStream to
  * System.out before creating a {@code TerminalPrinter} instance.
  */
-public class TerminalPrinter {
-	private final BufferedOutputStream printer;
-	
-	/**
-	 * Creates a default instance of TerminalPrinter.
-	 */
-	public TerminalPrinter() {
-		printer = new BufferedOutputStream(System.out);
-	}
-	
-	/**
-	 * Prints a string on screen.
-	 * @param text Text to print.
-	 */
-	public void print(String text) {
-		try {
-			printer.write(text.getBytes());
-			printer.flush();
-		} catch (IOException ex) {
-			System.err.println("Unexpected IOException occured when writing to terminal with"
-					+ " high speed printer.");
-			System.exit(-1);
-		}
-	}
-	
+public interface TerminalPrinter {
 	/*
 	 *
 	 * PRINT START
@@ -56,52 +29,46 @@ public class TerminalPrinter {
 	 */
 	
 	/**
+	 * Prints a string on screen.
+	 * @param text Text to print.
+	 */
+	public void print(String text);
+	
+	/**
 	 * Prints a int on screen.
 	 * @param i Integer to print.
 	 */
-	public void print(int i) {
-		print(String.valueOf(i));
-	}
+	public void print(int i);
 	
 	/**
 	 * Prints a long on screen.
 	 * @param l Long to print.
 	 */
-	public void print(long l) {
-		print(String.valueOf(l));
-	}
+	public void print(long l);
 	
 	/**
 	 * Prints a float on screen.
 	 * @param f Float to print.
 	 */
-	public void print(float f) {
-		print(String.valueOf(f));
-	}
+	public void print(float f);
 	
 	/**
 	 * Prints a double on screen.
 	 * @param d Double to print.
 	 */
-	public void print(double d) {
-		print(String.valueOf(d));
-	}
+	public void print(double d);
 	
 	/**
 	 * Prints a boolean on screen.
 	 * @param b Boolean to print.
 	 */
-	public void print(boolean b) {
-		print(String.valueOf(b));
-	}
+	public void print(boolean b);
 	
 	/**
 	 * Prints a char on screen.
 	 * @param c Character to print.
 	 */
-	public void print(char c) {
-		print(String.valueOf(c));
-	}
+	public void print(char c);
 	
 	/*
 	 *
@@ -113,55 +80,41 @@ public class TerminalPrinter {
 	 * Prints a string on screen and goes to new line.
 	 * @param text 
 	 */
-	public void println(String text) {
-		print(text + System.lineSeparator());
-	}
+	public void println(String text);
 	
 	/**
 	 * Prints a int on screen and goes to new line.
 	 * @param i Integer to print.
 	 */
-	public void println(int i) {
-		print(i + System.lineSeparator());
-	}
+	public void println(int i);
 	
 	/**
 	 * Prints a long on screen and goes to new line.
 	 * @param l Long to print.
 	 */
-	public void println(long l) {
-		print(l + System.lineSeparator());
-	}
+	public void println(long l);
 	
 	/**
 	 * Prints a float on screen and goes to new line.
 	 * @param f Float to print.
 	 */
-	public void println(float f) {
-		print(f + System.lineSeparator());
-	}
+	public void println(float f);
 	
 	/**
 	 * Prints a double on screen and goes to new line.
 	 * @param d Double to print.
 	 */
-	public void println(double d) {
-		print(d + System.lineSeparator());
-	}
+	public void println(double d);
 	
 	/**
 	 * Prints a boolean on screen and goes to new line.
 	 * @param b Boolean to print.
 	 */
-	public void println(boolean b) {
-		print(b + System.lineSeparator());
-	}
+	public void println(boolean b);
 	
 	/**
 	 * Prints a char on screen and goes to new line.
 	 * @param c Character to print.
 	 */
-	public void println(char c) {
-		print(c + System.lineSeparator());
-	}
+	public void println(char c);
 }

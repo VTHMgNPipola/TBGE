@@ -36,7 +36,7 @@ public class TablePrinterTest {
 		for(int i = 0; i < 5; i++) {
 			data.add(new Object[] { "Data " + i, i, i * i * i });
 		}
-		String expResult = 
+		String leftExpResult = 
 				  "+-------------+---------+-------------------+\n"
 				+ "| Sample Data | Data ID | Some Other Column |\n"
 				+ "+-------------+---------+-------------------+\n"
@@ -46,8 +46,20 @@ public class TablePrinterTest {
 				+ "| Data 3      | 3       | 27                |\n"
 				+ "| Data 4      | 4       | 64                |\n"
 				+ "+-------------+---------+-------------------+\n";
-		String result = TablePrinter.createTable(columnNames, data, false);
-		assertEquals(expResult, result);
+		String rightExpResult = 
+				  "+-------------+---------+-------------------+\n"
+				+ "| Sample Data | Data ID | Some Other Column |\n"
+				+ "+-------------+---------+-------------------+\n"
+				+ "|      Data 0 |       0 |                 0 |\n"
+				+ "|      Data 1 |       1 |                 1 |\n"
+				+ "|      Data 2 |       2 |                 8 |\n"
+				+ "|      Data 3 |       3 |                27 |\n"
+				+ "|      Data 4 |       4 |                64 |\n"
+				+ "+-------------+---------+-------------------+\n";
+		String leftResult = TablePrinter.createTable(columnNames, data, false);
+		String rightResult = TablePrinter.createTable(columnNames, data, true);
+		assertEquals(leftExpResult, leftResult);
+		assertEquals(rightExpResult, rightResult);
 	}
 	
 	/**
@@ -56,14 +68,14 @@ public class TablePrinterTest {
 	@Test
 	public void testPrintTable() {
 		System.out.println("\nTesting printTable");
-		TerminalPrinterTest.LoggedPrintStream lps = TerminalPrinterTest.LoggedPrintStream.create(System.out);
+		FastTerminalPrinterTest.LoggedPrintStream lps = FastTerminalPrinterTest.LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		Object[] columnNames = new Object[] { "Nothing", "Not Nothing" };
 		List<Object[]> data = new ArrayList<>();
 		for(int i = 0; i < 5; i++) {
 			data.add(new Object[] { "Data " + i, i * i});
 		}
-		TerminalPrinter tp = new TerminalPrinter();
+		TerminalPrinter tp = new FastTerminalPrinter();
 		TablePrinter.printTable(columnNames, data, false, tp);
 		String expResult = 
 				  "+---------+-------------+\n"
@@ -76,5 +88,5 @@ public class TablePrinterTest {
 				+ "| Data 4  | 16          |\n"
 				+ "+---------+-------------+\n";
 		assertEquals(expResult, lps.toString());
-	}	
+	}
 }
