@@ -68,7 +68,7 @@ public class TablePrinterTest {
 	@Test
 	public void testPrintTable() {
 		System.out.println("\nTesting printTable");
-		FastTerminalPrinterTest.LoggedPrintStream lps = FastTerminalPrinterTest.LoggedPrintStream.create(System.out);
+		LoggedPrintStream lps = LoggedPrintStream.create(System.out);
 		System.setOut(lps);
 		Object[] columnNames = new Object[] { "Nothing", "Not Nothing" };
 		List<Object[]> data = new ArrayList<>();
@@ -77,7 +77,11 @@ public class TablePrinterTest {
 		}
 		TerminalPrinter tp = new FastTerminalPrinter();
 		TablePrinter.printTable(columnNames, data, false, tp);
-		String expResult = 
+		String leftResult = lps.toString();
+		lps.clear();
+		TablePrinter.printTable(columnNames, data, true, tp);
+		String rightResult = lps.toString();
+		String leftExpResult = 
 				  "+---------+-------------+\n"
 				+ "| Nothing | Not Nothing |\n"
 				+ "+---------+-------------+\n"
@@ -87,6 +91,39 @@ public class TablePrinterTest {
 				+ "| Data 3  | 9           |\n"
 				+ "| Data 4  | 16          |\n"
 				+ "+---------+-------------+\n";
-		assertEquals(expResult, lps.toString());
+		String rightExpResult = 
+				  "+---------+-------------+\n"
+				+ "| Nothing | Not Nothing |\n"
+				+ "+---------+-------------+\n"
+				+ "|  Data 0 |           0 |\n"
+				+ "|  Data 1 |           1 |\n"
+				+ "|  Data 2 |           4 |\n"
+				+ "|  Data 3 |           9 |\n"
+				+ "|  Data 4 |          16 |\n"
+				+ "+---------+-------------+\n";
+		assertEquals(leftExpResult, leftResult);
+		assertEquals(rightExpResult, rightResult);
+	}
+	
+	/**
+	 * This test will test (obviously) the createTable method with a empty
+	 * column name and data array.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void canCreateEmptyTable() {
+		System.out.println("\nTesting if createTable can create empty table");
+		Object[] columnNames = new Object[] {}; // Empty column name array
+		List<Object[]> data = new ArrayList<>(); // Should be empty
+		TablePrinter.createTable(columnNames, data, false); // Should throw exception
+	}
+	
+	/**
+	 * This test will test (obviously) the createTable method with a null
+	 * column name and data array.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void canCreateNullTable() {
+		System.out.println("\nTesting if createTable can create null table");
+		TablePrinter.createTable(null, null, false); // Should throw exception
 	}
 }

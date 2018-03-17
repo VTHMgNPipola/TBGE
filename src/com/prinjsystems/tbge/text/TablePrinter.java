@@ -31,6 +31,10 @@ public class TablePrinter {
 	 * @return String containing the created table.
 	 */
 	public static String createTable(Object[] columnNames, List<Object[]> data, boolean allignRight) {
+		if(data == null || columnNames == null || data.isEmpty() || columnNames.length == 0) {
+			throw new IllegalStateException("Data and column name arrays cannot be empty!");
+		}
+		
 		StringBuilder table = new StringBuilder();
 		List<Integer> sizes = new ArrayList<>();
 		String header = null;
