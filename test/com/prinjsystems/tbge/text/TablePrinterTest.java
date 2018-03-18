@@ -126,4 +126,46 @@ public class TablePrinterTest {
 		System.out.println("\nTesting if createTable can create null table");
 		TablePrinter.createTable(null, null, false); // Should throw exception
 	}
+	
+	/**
+	 * This test tries to create a table just with empty strings.
+	 */
+	@Test
+	public void canCreateEmptyStringsTable() {
+		System.out.println("\nTesting if createTable can create table with array of empty strings");
+		Object[] columnNames = new Object[] { "", "" };
+		List<Object[]> data = new ArrayList<>();
+		data.add(new Object[] { "", "" }); // Reference to 'columnNames' cause unwanted behaviour
+		data.add(new Object[] { "", "" });
+		String expResult = 
+				  "+---------+---------+\n"
+				+ "| UNNAMED | UNNAMED |\n"
+				+ "+---------+---------+\n"
+				+ "| EMPTY   | EMPTY   |\n"
+				+ "| EMPTY   | EMPTY   |\n"
+				+ "+---------+---------+\n";
+		String result = TablePrinter.createTable(columnNames, data, false);
+		assertEquals(expResult, result);
+	}
+	
+	/**
+	 * Test if the {@code createTable} method can create a table with only one column.
+	 */
+	@Test
+	public void canCreateOneColumnArray() {
+		System.out.println("\nTesting if createTable can create a table with only one column");
+		Object[] columnNames = new Object[] { "Column 1" };
+		List<Object[]> data = new ArrayList<>();
+		data.add(new Object[] { "Data 1" });
+		data.add(new Object[] { "Data 2" });
+		String expResult = 
+				  "+----------+\n"
+				+ "| Column 1 |\n"
+				+ "+----------+\n"
+				+ "| Data 1   |\n"
+				+ "| Data 2   |\n"
+				+ "+----------+\n";
+		String result = TablePrinter.createTable(columnNames, data, false);
+		assertEquals(expResult, result);
+	}
 }

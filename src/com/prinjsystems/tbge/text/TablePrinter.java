@@ -35,6 +35,19 @@ public class TablePrinter {
 			throw new IllegalStateException("Data and column name arrays cannot be empty!");
 		}
 		
+		for(int i = 0; i < columnNames.length; i++) {
+			if(columnNames[i].toString().equals("") || columnNames[i] == null) {
+				columnNames[i] = "UNNAMED";
+			}
+		}
+		for(int i = 0; i < data.size(); i++) {
+			for(int j = 0; j < data.get(i).length; j++) {
+				if(data.get(i)[j].toString().equals("") || data.get(i)[j] == null) {
+					data.get(i)[j] = "EMPTY";
+				}
+			}
+		}
+		
 		StringBuilder table = new StringBuilder();
 		List<Integer> sizes = new ArrayList<>();
 		String header = null;
