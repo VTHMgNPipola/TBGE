@@ -89,6 +89,11 @@ public class FastTerminalPrinter implements TerminalPrinter {
 	 */
 	
 	@Override
+	public void println() {
+		print(System.lineSeparator());
+	}
+	
+	@Override
 	public void println(String text) {
 		print(text + System.lineSeparator());
 	}

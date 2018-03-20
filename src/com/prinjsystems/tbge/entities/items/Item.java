@@ -18,7 +18,7 @@ package com.prinjsystems.tbge.entities.items;
 
 import com.prinjsystems.tbge.entities.EmptyEntityContainer;
 import com.prinjsystems.tbge.entities.Entity;
-import com.prinjsystems.tbge.entities.EntityAction;
+import com.prinjsystems.tbge.entities.actions.EntityAction;
 import com.prinjsystems.tbge.entities.EntityContainer;
 import java.util.List;
 

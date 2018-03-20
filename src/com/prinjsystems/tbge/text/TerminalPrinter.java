@@ -77,6 +77,11 @@ public interface TerminalPrinter {
 	 */
 	
 	/**
+	 * Prints a new line.
+	 */
+	public void println();
+	
+	/**
 	 * Prints a string on screen and goes to new line.
 	 * @param text 
 	 */

@@ -14,7 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.prinjsystems.tbge.entities;
+package com.prinjsystems.tbge.entities.actions;
+
+import com.prinjsystems.tbge.entities.Entity;
 
 /**
  * Runs something for a entity.
