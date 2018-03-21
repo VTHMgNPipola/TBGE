@@ -46,6 +46,7 @@ public interface Selector {
 	
 	/**
 	 * Will show up the selector options, the text and, if defined, the default option.
+	 * @return Selected index.
 	 */
-	public void askSelector();
+	public int askSelector();
 }
